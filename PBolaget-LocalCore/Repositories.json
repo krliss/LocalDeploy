@@ -1,0 +1,16 @@
+[
+  {
+    "LocalPath": "I_Site Legacy",
+    "RemotePath": "https://tmhe@dev.azure.com/tmhe/I_Site/_git/I_Site%20Legacy",
+    "Configuration": "Debug",
+    "PublishProfile": "publishprofile",
+    "ServiceType": "I_Site"
+  },
+  {
+    "LocalPath": "Authorization",
+    "RemotePath": "https://tmhe@dev.azure.com/tmhe/I_Site/_git/Toyota.Lst.AuthorizationService",
+    "Configuration": "Debug",
+    "PublishProfile": "publishprofile",
+    "ServiceType": "Service"
+  }
+]
