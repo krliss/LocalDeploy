@@ -227,6 +227,8 @@ namespace GitAppLocalCore.Forms
         private Button CreatePublishButton(MsBuildCommand msBuild)
         {
             var publishButton = Clone(PublishButtonTemplate);
+            publishButton.Enabled = false; //disable publish for now
+            publishButton.Font = new Font(publishButton.Font, FontStyle.Strikeout);
 
             publishButton.Click += async (sender, args) =>
             {
@@ -265,7 +267,7 @@ namespace GitAppLocalCore.Forms
                     await Task.Run(git.Sync);
                     syncButton.BackColor = SyncButtonTemplate.BackColor;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     syncButton.BackColor = Color.LightCoral;
                 }
