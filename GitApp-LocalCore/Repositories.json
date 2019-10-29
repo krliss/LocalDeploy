@@ -1,0 +1,37 @@
+[
+  {
+    "LocalPath": "I_Site Legacy",
+    "RemotePath": "btworld\\exkrlis1@https://dev.azure.com/tmhe/I_Site/_git/I_Site%20Legacy",
+    "Configuration": "Debug",
+    "PublishProfile": "publishprofile",
+    "ServiceType": "I_Site"
+  },
+  {
+    "LocalPath": "Toyota.Lst.AuthorizationService",
+    "RemotePath": "btworld\\exkrlis1@https://dev.azure.com/tmhe/I_Site/_git/Toyota.Lst.AuthorizationService",
+    "Configuration": "Debug",
+    "PublishProfile": "publishprofile",
+    "ServiceType": "Service"
+  },
+  {
+    "LocalPath": "Toyota.Lst.Operator",
+    "RemotePath": "btworld\\exkrlis1@https://dev.azure.com/tmhe/I_Site/_git/Toyota.Lst.OperatorService",
+    "Configuration": "Debug",
+    "PublishProfile": "publishprofile",
+    "ServiceType": "Service"
+  },
+  {
+    "LocalPath": "Toyota.Lst.PreOpCheckService",
+    "RemotePath": "btworld\\exkrlis1@https://dev.azure.com/tmhe/I_Site/_git/Toyota.Lst.PreOpCheckService",
+    "Configuration": "Debug",
+    "PublishProfile": "publishprofile",
+    "ServiceType": "Service"
+  },
+  {
+    "LocalPath": "Toyota.Lst.SiteMachineService",
+    "RemotePath": "btworld\\exkrlis1@https://dev.azure.com/tmhe/I_Site/_git/Toyota.Lst.SiteMachineService",
+    "Configuration": "Debug",
+    "PublishProfile": "publishprofile",
+    "ServiceType": "Service"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "GitPath": "C:\\Program Files\\Git\\bin\\git.exe",
+  "AzureStorageEmulatorPath": "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\Storage Emulator\\AzureStorageEmulator.exe",
+  "MsBuild": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe",
+  "WwwRootPath": "C:\\inetpub\\wwwroot",
+  "CoreRootPath": "C:\\users\\exkrlis1\\source\\repos\\",
+  "ProxyRootPath": "C:\\users\\exkrlis1\\source\\repos\\",
+  "OtherRootPath": "C:\\users\\exkrlis1\\source\\repos\\",
+  "LogViewer": "C:\\Windows\\System32\\notepad.exe"
+}

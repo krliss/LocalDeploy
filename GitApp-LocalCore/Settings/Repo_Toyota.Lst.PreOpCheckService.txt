@@ -1,0 +1,223 @@
+15/08/2019 09:21:18 - Error when running Sync
+Error when running C:\users\exkrlis1\source\repos\Toyota.Lst.PreOpCheckService C:\Program Files\Git\bin\git.exe pull --rebase origin
+Updating ed7243e..e176cba
+Fast-forward
+ ServiceBus AsyncApi Spec.txt                       | 114 ----
+ .../PreOpCheckOperatorAggregationController.cs     |   9 +
+ .../Controllers/PreOpCheckResultController.cs      |   8 +
+ Toyota.Lst.PreOpCheck.FrontService/Startup.cs      |  14 +-
+ .../APIM/Deploy/New-SWRandomPassword.psm1          | 137 +++++
+ .../APIM/Deploy/create-deploy-settings.ps1         |  13 +
+ .../APIM/Deploy/generate-subscription-key.ps1      |  39 ++
+ .../ls-apim-preopcheck.dev.parameters.json         |   8 +
+ .../ls-apim-preopcheck.prod.parameters.json        |   8 +
+ .../ls-apim-preopcheck.test.parameters.json        |   8 +
+ .../APIM/Specification/swagger.dev.json            | 590 +++++++++++++++++++++
+ .../APIM/Specification/swagger.prod.json           | 590 +++++++++++++++++++++
+ .../APIM/Specification/swagger.test.json           | 590 +++++++++++++++++++++
+ .../APIM/build-pipeline.yml                        |  55 ++
+ .../APIM/ls-apim-PreOpCheck.json                   | 105 ++++
+ .../Deployment.targets                             | 123 +++++
+ ...Toyota.Lst.PreOpCheck.Infrastructure.deployproj |  32 ++
+ .../PreOpCheckOperatorAggregationRepository.cs     |   9 +
+ .../Repositories/PreOpCheckResultRepository.cs     |   8 +
+ .../PreOpCheckResultRepositoryByQueryTests.cs      |   2 +-
+ Toyota.Lst.PreOpCheck.Service/Service.cs           |  17 +
+ build-pipeline.yml                                 |   2 +-
+ 22 files changed, 2357 insertions(+), 124 deletions(-)
+ delete mode 100644 ServiceBus AsyncApi Spec.txt
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Deploy/New-SWRandomPassword.psm1
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Deploy/create-deploy-settings.ps1
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Deploy/generate-subscription-key.ps1
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Parameters/ls-apim-preopcheck.dev.parameters.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Parameters/ls-apim-preopcheck.prod.parameters.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Parameters/ls-apim-preopcheck.test.parameters.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Specification/swagger.dev.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Specification/swagger.prod.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Specification/swagger.test.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/build-pipeline.yml
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/ls-apim-PreOpCheck.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/Deployment.targets
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/Toyota.Lst.PreOpCheck.Infrastructure.deployproj
+Current branch develop is up to date.
+
+Updating ed7243e..e176cba
+Fast-forward
+ ServiceBus AsyncApi Spec.txt                       | 114 ----
+ .../PreOpCheckOperatorAggregationController.cs     |   9 +
+ .../Controllers/PreOpCheckResultController.cs      |   8 +
+ Toyota.Lst.PreOpCheck.FrontService/Startup.cs      |  14 +-
+ .../APIM/Deploy/New-SWRandomPassword.psm1          | 137 +++++
+ .../APIM/Deploy/create-deploy-settings.ps1         |  13 +
+ .../APIM/Deploy/generate-subscription-key.ps1      |  39 ++
+ .../ls-apim-preopcheck.dev.parameters.json         |   8 +
+ .../ls-apim-preopcheck.prod.parameters.json        |   8 +
+ .../ls-apim-preopcheck.test.parameters.json        |   8 +
+ .../APIM/Specification/swagger.dev.json            | 590 +++++++++++++++++++++
+ .../APIM/Specification/swagger.prod.json           | 590 +++++++++++++++++++++
+ .../APIM/Specification/swagger.test.json           | 590 +++++++++++++++++++++
+ .../APIM/build-pipeline.yml                        |  55 ++
+ .../APIM/ls-apim-PreOpCheck.json                   | 105 ++++
+ .../Deployment.targets                             | 123 +++++
+ ...Toyota.Lst.PreOpCheck.Infrastructure.deployproj |  32 ++
+ .../PreOpCheckOperatorAggregationRepository.cs     |   9 +
+ .../Repositories/PreOpCheckResultRepository.cs     |   8 +
+ .../PreOpCheckResultRepositoryByQueryTests.cs      |   2 +-
+ Toyota.Lst.PreOpCheck.Service/Service.cs           |  17 +
+ build-pipeline.yml                                 |   2 +-
+ 22 files changed, 2357 insertions(+), 124 deletions(-)
+ delete mode 100644 ServiceBus AsyncApi Spec.txt
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Deploy/New-SWRandomPassword.psm1
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Deploy/create-deploy-settings.ps1
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Deploy/generate-subscription-key.ps1
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Parameters/ls-apim-preopcheck.dev.parameters.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Parameters/ls-apim-preopcheck.prod.parameters.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Parameters/ls-apim-preopcheck.test.parameters.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Specification/swagger.dev.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Specification/swagger.prod.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/Specification/swagger.test.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/build-pipeline.yml
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/APIM/ls-apim-PreOpCheck.json
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/Deployment.targets
+ create mode 100644 Toyota.Lst.PreOpCheck.Infrastructure/Toyota.Lst.PreOpCheck.Infrastructure.deployproj
+Current branch develop is up to date.
+
+25/09/2019 08:43:26 - Error when running Sync
+Error when running C:\users\exkrlis1\source\repos\Toyota.Lst.PreOpCheckService C:\Program Files\Git\bin\git.exe pull --rebase origin
+Updating 6e9edcf..a69c151
+Fast-forward
+ .../Caching/MachineCacheItem.cs                    | 66 ++++++++++++++++
+ .../Caching/OperatorCacheItem.cs                   | 37 +++++++++
+ .../Caching/SiteCacheItem.cs                       | 32 ++++++++
+ Toyota.Lst.PreOpCheck.Domain/Machine.cs            |  4 +
+ .../Controllers/PreOpCheckSummaryController.cs     |  8 +-
+ .../Models/Response/PreOpCheckSummaryResponse.cs   |  2 +-
+ .../Toyota.Lst.PreOpCheck.FrontService.csproj      |  2 +-
+ Toyota.Lst.PreOpCheck.Model/PreOpCheckAlert.cs     | 38 +++++++--
+ .../Toyota.Lst.PreOpCheck.Model.csproj             |  2 +-
+ .../Interfaces/IMachineCacheRepository.cs          | 17 +++++
+ .../Interfaces/IOperatorCacheRepository.cs         | 16 ++++
+ .../Interfaces/ISiteCacheRepository.cs             | 16 ++++
+ .../Repositories/Caching/CacheRepositoryBase.cs    | 68 +++++++++++++++++
+ .../Repositories/Caching/MachineCacheRepository.cs | 42 ++++++++++
+ .../Caching/OperatorCacheRepository.cs             | 35 +++++++++
+ .../Repositories/Caching/SiteCacheRepository.cs    | 35 +++++++++
+ .../Repositories/Helpers/RepositoryHelper.cs       |  4 +-
+ .../PreOpCheckMachineAggregationRepository.cs      | 45 +++++------
+ .../PreOpCheckOperatorAggregationRepository.cs     | 50 ++++++------
+ .../Repositories/PreOpCheckResultRepository.cs     | 16 ++--
+ .../Toyota.Lst.PreOpCheck.Repository.csproj        |  2 +-
+ .../Caching/MachineCacheRepositoryTests.cs         | 89 ++++++++++++++++++++++
+ .../Caching/OperatorCacheRepositoryTests.cs        | 78 +++++++++++++++++++
+ .../Caching/SiteCacheRepositoryTests.cs            | 78 +++++++++++++++++++
+ .../PreOpChecklistLegacySyncRepositoryTests.cs     |  2 +-
+ .../PreOpChecklistRepositoryTests.cs               |  2 +-
+ ...essedImmobilizationResetQueueRepositoryTests.cs |  3 +-
+ ...OpCheckMachineAggregationRepositoryQueryTest.cs |  2 +-
+ .../PreOpCheckMachineAggregationRepositoryTest.cs  |  2 +-
+ ...pCheckOperatorAggregationRepositoryQueryTest.cs |  2 +-
+ .../PreOpCheckOperatorAggregationRepositoryTest.cs |  2 +-
+ .../PreOpCheckResultLegacySyncRepositoryTests.cs   |  2 +-
+ .../PreOpCheckResultRepositoryByQueryTests.cs      |  5 +-
+ .../PreOpCheckResultRepositoryTests.cs             |  7 +-
+ .../PreOpCheckResult/AlertMessageConverter.cs      |  5 +-
+ .../PreOpCheckResult/AlertProcessor.cs             |  2 +-
+ .../PreOpCheckResult/MachineProcessor.cs           |  1 +
+ .../Impl/PreOpChecklistLegacySynchronizer.cs       | 16 ----
+ .../PreOpCheck/MachineProcessorTests.cs            |  3 +-
+ 39 files changed, 728 insertions(+), 110 deletions(-)
+ create mode 100644 Toyota.Lst.PreOpCheck.Domain/Caching/MachineCacheItem.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Domain/Caching/OperatorCacheItem.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Domain/Caching/SiteCacheItem.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Interfaces/IMachineCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Interfaces/IOperatorCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Interfaces/ISiteCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/CacheRepositoryBase.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/MachineCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/OperatorCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/SiteCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.RepositoryTest/Caching/MachineCacheRepositoryTests.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.RepositoryTest/Caching/OperatorCacheRepositoryTests.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.RepositoryTest/Caching/SiteCacheRepositoryTests.cs
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Checklist}/PreOpChecklistLegacySyncRepositoryTests.cs (96%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Checklist}/PreOpChecklistRepositoryTests.cs (97%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => ImmobilizationReset}/UnprocessedImmobilizationResetQueueRepositoryTests.cs (98%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => MachineAggregation}/PreOpCheckMachineAggregationRepositoryQueryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => MachineAggregation}/PreOpCheckMachineAggregationRepositoryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => OperatorAggregation}/PreOpCheckOperatorAggregationRepositoryQueryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => OperatorAggregation}/PreOpCheckOperatorAggregationRepositoryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Result}/PreOpCheckResultLegacySyncRepositoryTests.cs (96%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Result}/PreOpCheckResultRepositoryByQueryTests.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Result}/PreOpCheckResultRepositoryTests.cs (98%)
+Current branch develop is up to date.
+
+Updating 6e9edcf..a69c151
+Fast-forward
+ .../Caching/MachineCacheItem.cs                    | 66 ++++++++++++++++
+ .../Caching/OperatorCacheItem.cs                   | 37 +++++++++
+ .../Caching/SiteCacheItem.cs                       | 32 ++++++++
+ Toyota.Lst.PreOpCheck.Domain/Machine.cs            |  4 +
+ .../Controllers/PreOpCheckSummaryController.cs     |  8 +-
+ .../Models/Response/PreOpCheckSummaryResponse.cs   |  2 +-
+ .../Toyota.Lst.PreOpCheck.FrontService.csproj      |  2 +-
+ Toyota.Lst.PreOpCheck.Model/PreOpCheckAlert.cs     | 38 +++++++--
+ .../Toyota.Lst.PreOpCheck.Model.csproj             |  2 +-
+ .../Interfaces/IMachineCacheRepository.cs          | 17 +++++
+ .../Interfaces/IOperatorCacheRepository.cs         | 16 ++++
+ .../Interfaces/ISiteCacheRepository.cs             | 16 ++++
+ .../Repositories/Caching/CacheRepositoryBase.cs    | 68 +++++++++++++++++
+ .../Repositories/Caching/MachineCacheRepository.cs | 42 ++++++++++
+ .../Caching/OperatorCacheRepository.cs             | 35 +++++++++
+ .../Repositories/Caching/SiteCacheRepository.cs    | 35 +++++++++
+ .../Repositories/Helpers/RepositoryHelper.cs       |  4 +-
+ .../PreOpCheckMachineAggregationRepository.cs      | 45 +++++------
+ .../PreOpCheckOperatorAggregationRepository.cs     | 50 ++++++------
+ .../Repositories/PreOpCheckResultRepository.cs     | 16 ++--
+ .../Toyota.Lst.PreOpCheck.Repository.csproj        |  2 +-
+ .../Caching/MachineCacheRepositoryTests.cs         | 89 ++++++++++++++++++++++
+ .../Caching/OperatorCacheRepositoryTests.cs        | 78 +++++++++++++++++++
+ .../Caching/SiteCacheRepositoryTests.cs            | 78 +++++++++++++++++++
+ .../PreOpChecklistLegacySyncRepositoryTests.cs     |  2 +-
+ .../PreOpChecklistRepositoryTests.cs               |  2 +-
+ ...essedImmobilizationResetQueueRepositoryTests.cs |  3 +-
+ ...OpCheckMachineAggregationRepositoryQueryTest.cs |  2 +-
+ .../PreOpCheckMachineAggregationRepositoryTest.cs  |  2 +-
+ ...pCheckOperatorAggregationRepositoryQueryTest.cs |  2 +-
+ .../PreOpCheckOperatorAggregationRepositoryTest.cs |  2 +-
+ .../PreOpCheckResultLegacySyncRepositoryTests.cs   |  2 +-
+ .../PreOpCheckResultRepositoryByQueryTests.cs      |  5 +-
+ .../PreOpCheckResultRepositoryTests.cs             |  7 +-
+ .../PreOpCheckResult/AlertMessageConverter.cs      |  5 +-
+ .../PreOpCheckResult/AlertProcessor.cs             |  2 +-
+ .../PreOpCheckResult/MachineProcessor.cs           |  1 +
+ .../Impl/PreOpChecklistLegacySynchronizer.cs       | 16 ----
+ .../PreOpCheck/MachineProcessorTests.cs            |  3 +-
+ 39 files changed, 728 insertions(+), 110 deletions(-)
+ create mode 100644 Toyota.Lst.PreOpCheck.Domain/Caching/MachineCacheItem.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Domain/Caching/OperatorCacheItem.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Domain/Caching/SiteCacheItem.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Interfaces/IMachineCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Interfaces/IOperatorCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Interfaces/ISiteCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/CacheRepositoryBase.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/MachineCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/OperatorCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.Repository/Repositories/Caching/SiteCacheRepository.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.RepositoryTest/Caching/MachineCacheRepositoryTests.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.RepositoryTest/Caching/OperatorCacheRepositoryTests.cs
+ create mode 100644 Toyota.Lst.PreOpCheck.RepositoryTest/Caching/SiteCacheRepositoryTests.cs
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Checklist}/PreOpChecklistLegacySyncRepositoryTests.cs (96%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Checklist}/PreOpChecklistRepositoryTests.cs (97%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => ImmobilizationReset}/UnprocessedImmobilizationResetQueueRepositoryTests.cs (98%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => MachineAggregation}/PreOpCheckMachineAggregationRepositoryQueryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => MachineAggregation}/PreOpCheckMachineAggregationRepositoryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => OperatorAggregation}/PreOpCheckOperatorAggregationRepositoryQueryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => OperatorAggregation}/PreOpCheckOperatorAggregationRepositoryTest.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Result}/PreOpCheckResultLegacySyncRepositoryTests.cs (96%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Result}/PreOpCheckResultRepositoryByQueryTests.cs (99%)
+ rename Toyota.Lst.PreOpCheck.RepositoryTest/{ => Result}/PreOpCheckResultRepositoryTests.cs (98%)
+Current branch develop is up to date.
+
+29/10/2019 09:31:36 - Error when running Fetch
+The system cannot find the file specified29/10/2019 09:31:49 - Error when running Fetch
+The system cannot find the file specified

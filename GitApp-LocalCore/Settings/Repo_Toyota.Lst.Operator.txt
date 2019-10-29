@@ -1,0 +1,257 @@
+25/09/2019 08:43:23 - Error when running Sync
+Error when running C:\users\exkrlis1\source\repos\Toyota.Lst.Operator C:\Program Files\Git\bin\git.exe pull --rebase origin
+Updating ec0499d..2e0c681
+Fast-forward
+ ...TESTS_IN_THIS_PROJECT_SHOULD_NEVER_BE_FIXED.txt |   7 ++
+ .../OperatorContractV1_0Tests.cs                   |  29 +++++
+ ...Toyota.Lst.Operator.BreakingChangesTests.csproj |  24 ++++
+ .../Toyota.Lst.Operator.Common.csproj              |   4 +
+ .../LegacyUpdateStatusEntity.cs                    |  20 ---
+ .../OperatorEntity.cs                              |   6 +-
+ .../OperatorGroupEntity.cs                         |   2 +-
+ .../Toyota.Lst.Operator.Domain.csproj              |   4 +
+ .../Controllers/OperatorController.cs              |   7 +-
+ .../PackageRoot/ServiceManifest.xml                |   2 +-
+ .../Properties/launchSettings.json                 |  21 ++++
+ Toyota.Lst.Operator.FrontService/Startup.cs        |  13 +-
+ .../Toyota.Lst.Operator.FrontService.csproj        |   2 +-
+ .../appsettings.Development.json                   |  13 +-
+ .../appsettings.LocalDevelopment.json              |   8 ++
+ .../appsettings.Production.json                    |  12 ++
+ .../appsettings.Test.json                          |   7 ++
+ Toyota.Lst.Operator.FrontService/appsettings.json  |   5 +-
+ .../APIM/Deploy/New-SWRandomPassword.psm1          | 137 +++++++++++++++++++++
+ .../APIM/Deploy/create-deploy-settings.ps1         |  13 ++
+ .../APIM/Deploy/generate-subscription-key.ps1      |  39 ++++++
+ .../ls-apim-operator.dev.parameters.json           |   8 ++
+ .../ls-apim-operator.prod.parameters.json          |   8 ++
+ .../ls-apim-operator.test.parameters.json          |   8 ++
+ .../APIM/Specification/swagger.dev.json            |  70 +++++++++++
+ .../APIM/Specification/swagger.prod.json           |  70 +++++++++++
+ .../APIM/Specification/swagger.test.json           |  70 +++++++++++
+ .../APIM/build-pipeline.yml                        |  55 +++++++++
+ .../APIM/ls-apim-operator.json                     | 105 ++++++++++++++++
+ .../Deployment.targets                             | 123 ++++++++++++++++++
+ .../MongoDb/MongoDb.Development.json               |   0
+ .../MongoDb/MongoDb.Production.json                |  16 +++
+ .../MongoDb/MongoDb.Test.json                      |  16 +++
+ .../Toyota.Lst.Operator.Infrastructure.deployproj  |  42 +++++++
+ .../OperatorGroupLegacySyncTests.cs                |  15 +--
+ .../OperatorLegacySyncTests.cs                     |  15 +--
+ .../OperatorTests.cs                               |  30 ++---
+ .../Toyota.Lst.Operator.IntegrationTests.csproj    |   4 +
+ .../Interfaces/ILegacySyncRepository.cs            |   6 +-
+ .../{ => Interfaces}/IOperatorGroupRepository.cs   |   4 +-
+ .../Interfaces/IOperatorRepository.cs              |   2 +-
+ .../LegacySyncRepository.cs                        |  42 ++-----
+ .../OperatorGroupRepository.cs                     |   3 +-
+ .../OperatorRepository.cs                          |   9 +-
+ .../Toyota.Lst.Operator.Repository.csproj          |   8 +-
+ .../LegacySyncRepositoryTests.cs                   |  57 +++------
+ .../OperatorGroupRepositoryTests.cs                |   2 +-
+ .../OperatorRepositoryTests.cs                     |   6 +-
+ .../Toyota.Lst.Operator.RepositoryTests.csproj     |   6 +-
+ Toyota.Lst.Operator.TestCommon/MongoDbFiller.cs    |   2 +-
+ Toyota.Lst.Operator.TestCommon/MongoDbTestBase.cs  |   5 +-
+ Toyota.Lst.Operator.TestCommon/SeedData.cs         |   2 +-
+ .../Toyota.Lst.Operator.TestCommon.csproj          |  10 +-
+ .../FrontService/FrontServiceTests.cs              |   4 +-
+ Toyota.Lst.Operator.UnitTests/LegacySyncTests.cs   |  19 +--
+ .../OperatorServiceTest.cs                         |  43 +++++++
+ .../Toyota.Lst.Operator.UnitTests.csproj           |   4 +
+ .../ApplicationParameters/Azure.Development.xml    |   9 ++
+ .../{Cloud.xml => Azure.Production.xml}            |   2 +
+ .../ApplicationParameters/Azure.Test.xml           |   9 ++
+ .../ApplicationParameters/Local.1Node.xml          |   4 +-
+ .../ApplicationParameters/Local.5Node.xml          |   8 +-
+ .../PublishProfiles/Azure.Development.xml          |   6 +
+ .../PublishProfiles/Azure.Production.xml           |   6 +
+ Toyota.Lst.Operator/PublishProfiles/Azure.Test.xml |   6 +
+ Toyota.Lst.Operator/PublishProfiles/Cloud.xml      |  26 ----
+ Toyota.Lst.Operator/Toyota.Lst.Operator.sfproj     |   8 +-
+ Toyota.Lst.OperatorService.sln                     |  30 +++--
+ .../LegacySync/LegacySynchronizerBase.cs           |  21 ++--
+ .../LegacySync/OperatorGroupLegacySynchronizer.cs  |   7 +-
+ .../LegacySync/OperatorLegacySynchronizer.cs       |   7 +-
+ Toyota.Lst.OperatorService/OperatorService.cs      |  59 +++++----
+ .../PackageRoot/ServiceManifest.xml                |   2 +-
+ .../Properties/launchSettings.json                 |  21 ++++
+ .../Toyota.Lst.OperatorService.csproj              |   2 +-
+ .../appsettings.Development.json                   |  23 ++--
+ .../appsettings.LocalDevelopment.json              |  23 ++--
+ .../appsettings.Production.json                    |  15 +++
+ Toyota.Lst.OperatorService/appsettings.Test.json   |  15 +++
+ Toyota.Lst.OperatorService/appsettings.json        |  16 +--
+ build-pipeline.yml                                 |  93 ++++++++++++++
+ 81 files changed, 1348 insertions(+), 334 deletions(-)
+ create mode 100644 Toyota.Lst.Operator.BreakingChangesTests/FAILING_TESTS_IN_THIS_PROJECT_SHOULD_NEVER_BE_FIXED.txt
+ create mode 100644 Toyota.Lst.Operator.BreakingChangesTests/OperatorContractV1_0Tests.cs
+ create mode 100644 Toyota.Lst.Operator.BreakingChangesTests/Toyota.Lst.Operator.BreakingChangesTests.csproj
+ delete mode 100644 Toyota.Lst.Operator.Data/LegacyUpdateStatusEntity.cs
+ rename {Toyota.Lst.Operator.Data => Toyota.Lst.Operator.Domain}/OperatorEntity.cs (92%)
+ rename {Toyota.Lst.Operator.Data => Toyota.Lst.Operator.Domain}/OperatorGroupEntity.cs (95%)
+ rename Toyota.Lst.Operator.Data/Toyota.Lst.Operator.Data.csproj => Toyota.Lst.Operator.Domain/Toyota.Lst.Operator.Domain.csproj (68%)
+ create mode 100644 Toyota.Lst.Operator.FrontService/Properties/launchSettings.json
+ create mode 100644 Toyota.Lst.Operator.FrontService/appsettings.LocalDevelopment.json
+ create mode 100644 Toyota.Lst.Operator.FrontService/appsettings.Production.json
+ create mode 100644 Toyota.Lst.Operator.FrontService/appsettings.Test.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Deploy/New-SWRandomPassword.psm1
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Deploy/create-deploy-settings.ps1
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Deploy/generate-subscription-key.ps1
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Parameters/ls-apim-operator.dev.parameters.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Parameters/ls-apim-operator.prod.parameters.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Parameters/ls-apim-operator.test.parameters.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Specification/swagger.dev.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Specification/swagger.prod.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Specification/swagger.test.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/build-pipeline.yml
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/ls-apim-operator.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/Deployment.targets
+ rename MongoDb-dev.json => Toyota.Lst.Operator.Infrastructure/MongoDb/MongoDb.Development.json (100%)
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/MongoDb/MongoDb.Production.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/MongoDb/MongoDb.Test.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/Toyota.Lst.Operator.Infrastructure.deployproj
+ rename Toyota.Lst.Operator.Repository/{ => Interfaces}/IOperatorGroupRepository.cs (83%)
+ create mode 100644 Toyota.Lst.Operator.UnitTests/OperatorServiceTest.cs
+ create mode 100644 Toyota.Lst.Operator/ApplicationParameters/Azure.Development.xml
+ rename Toyota.Lst.Operator/ApplicationParameters/{Cloud.xml => Azure.Production.xml} (67%)
+ create mode 100644 Toyota.Lst.Operator/ApplicationParameters/Azure.Test.xml
+ create mode 100644 Toyota.Lst.Operator/PublishProfiles/Azure.Development.xml
+ create mode 100644 Toyota.Lst.Operator/PublishProfiles/Azure.Production.xml
+ create mode 100644 Toyota.Lst.Operator/PublishProfiles/Azure.Test.xml
+ delete mode 100644 Toyota.Lst.Operator/PublishProfiles/Cloud.xml
+ create mode 100644 Toyota.Lst.OperatorService/Properties/launchSettings.json
+ create mode 100644 Toyota.Lst.OperatorService/appsettings.Production.json
+ create mode 100644 Toyota.Lst.OperatorService/appsettings.Test.json
+ create mode 100644 build-pipeline.yml
+Current branch develop is up to date.
+
+Updating ec0499d..2e0c681
+Fast-forward
+ ...TESTS_IN_THIS_PROJECT_SHOULD_NEVER_BE_FIXED.txt |   7 ++
+ .../OperatorContractV1_0Tests.cs                   |  29 +++++
+ ...Toyota.Lst.Operator.BreakingChangesTests.csproj |  24 ++++
+ .../Toyota.Lst.Operator.Common.csproj              |   4 +
+ .../LegacyUpdateStatusEntity.cs                    |  20 ---
+ .../OperatorEntity.cs                              |   6 +-
+ .../OperatorGroupEntity.cs                         |   2 +-
+ .../Toyota.Lst.Operator.Domain.csproj              |   4 +
+ .../Controllers/OperatorController.cs              |   7 +-
+ .../PackageRoot/ServiceManifest.xml                |   2 +-
+ .../Properties/launchSettings.json                 |  21 ++++
+ Toyota.Lst.Operator.FrontService/Startup.cs        |  13 +-
+ .../Toyota.Lst.Operator.FrontService.csproj        |   2 +-
+ .../appsettings.Development.json                   |  13 +-
+ .../appsettings.LocalDevelopment.json              |   8 ++
+ .../appsettings.Production.json                    |  12 ++
+ .../appsettings.Test.json                          |   7 ++
+ Toyota.Lst.Operator.FrontService/appsettings.json  |   5 +-
+ .../APIM/Deploy/New-SWRandomPassword.psm1          | 137 +++++++++++++++++++++
+ .../APIM/Deploy/create-deploy-settings.ps1         |  13 ++
+ .../APIM/Deploy/generate-subscription-key.ps1      |  39 ++++++
+ .../ls-apim-operator.dev.parameters.json           |   8 ++
+ .../ls-apim-operator.prod.parameters.json          |   8 ++
+ .../ls-apim-operator.test.parameters.json          |   8 ++
+ .../APIM/Specification/swagger.dev.json            |  70 +++++++++++
+ .../APIM/Specification/swagger.prod.json           |  70 +++++++++++
+ .../APIM/Specification/swagger.test.json           |  70 +++++++++++
+ .../APIM/build-pipeline.yml                        |  55 +++++++++
+ .../APIM/ls-apim-operator.json                     | 105 ++++++++++++++++
+ .../Deployment.targets                             | 123 ++++++++++++++++++
+ .../MongoDb/MongoDb.Development.json               |   0
+ .../MongoDb/MongoDb.Production.json                |  16 +++
+ .../MongoDb/MongoDb.Test.json                      |  16 +++
+ .../Toyota.Lst.Operator.Infrastructure.deployproj  |  42 +++++++
+ .../OperatorGroupLegacySyncTests.cs                |  15 +--
+ .../OperatorLegacySyncTests.cs                     |  15 +--
+ .../OperatorTests.cs                               |  30 ++---
+ .../Toyota.Lst.Operator.IntegrationTests.csproj    |   4 +
+ .../Interfaces/ILegacySyncRepository.cs            |   6 +-
+ .../{ => Interfaces}/IOperatorGroupRepository.cs   |   4 +-
+ .../Interfaces/IOperatorRepository.cs              |   2 +-
+ .../LegacySyncRepository.cs                        |  42 ++-----
+ .../OperatorGroupRepository.cs                     |   3 +-
+ .../OperatorRepository.cs                          |   9 +-
+ .../Toyota.Lst.Operator.Repository.csproj          |   8 +-
+ .../LegacySyncRepositoryTests.cs                   |  57 +++------
+ .../OperatorGroupRepositoryTests.cs                |   2 +-
+ .../OperatorRepositoryTests.cs                     |   6 +-
+ .../Toyota.Lst.Operator.RepositoryTests.csproj     |   6 +-
+ Toyota.Lst.Operator.TestCommon/MongoDbFiller.cs    |   2 +-
+ Toyota.Lst.Operator.TestCommon/MongoDbTestBase.cs  |   5 +-
+ Toyota.Lst.Operator.TestCommon/SeedData.cs         |   2 +-
+ .../Toyota.Lst.Operator.TestCommon.csproj          |  10 +-
+ .../FrontService/FrontServiceTests.cs              |   4 +-
+ Toyota.Lst.Operator.UnitTests/LegacySyncTests.cs   |  19 +--
+ .../OperatorServiceTest.cs                         |  43 +++++++
+ .../Toyota.Lst.Operator.UnitTests.csproj           |   4 +
+ .../ApplicationParameters/Azure.Development.xml    |   9 ++
+ .../{Cloud.xml => Azure.Production.xml}            |   2 +
+ .../ApplicationParameters/Azure.Test.xml           |   9 ++
+ .../ApplicationParameters/Local.1Node.xml          |   4 +-
+ .../ApplicationParameters/Local.5Node.xml          |   8 +-
+ .../PublishProfiles/Azure.Development.xml          |   6 +
+ .../PublishProfiles/Azure.Production.xml           |   6 +
+ Toyota.Lst.Operator/PublishProfiles/Azure.Test.xml |   6 +
+ Toyota.Lst.Operator/PublishProfiles/Cloud.xml      |  26 ----
+ Toyota.Lst.Operator/Toyota.Lst.Operator.sfproj     |   8 +-
+ Toyota.Lst.OperatorService.sln                     |  30 +++--
+ .../LegacySync/LegacySynchronizerBase.cs           |  21 ++--
+ .../LegacySync/OperatorGroupLegacySynchronizer.cs  |   7 +-
+ .../LegacySync/OperatorLegacySynchronizer.cs       |   7 +-
+ Toyota.Lst.OperatorService/OperatorService.cs      |  59 +++++----
+ .../PackageRoot/ServiceManifest.xml                |   2 +-
+ .../Properties/launchSettings.json                 |  21 ++++
+ .../Toyota.Lst.OperatorService.csproj              |   2 +-
+ .../appsettings.Development.json                   |  23 ++--
+ .../appsettings.LocalDevelopment.json              |  23 ++--
+ .../appsettings.Production.json                    |  15 +++
+ Toyota.Lst.OperatorService/appsettings.Test.json   |  15 +++
+ Toyota.Lst.OperatorService/appsettings.json        |  16 +--
+ build-pipeline.yml                                 |  93 ++++++++++++++
+ 81 files changed, 1348 insertions(+), 334 deletions(-)
+ create mode 100644 Toyota.Lst.Operator.BreakingChangesTests/FAILING_TESTS_IN_THIS_PROJECT_SHOULD_NEVER_BE_FIXED.txt
+ create mode 100644 Toyota.Lst.Operator.BreakingChangesTests/OperatorContractV1_0Tests.cs
+ create mode 100644 Toyota.Lst.Operator.BreakingChangesTests/Toyota.Lst.Operator.BreakingChangesTests.csproj
+ delete mode 100644 Toyota.Lst.Operator.Data/LegacyUpdateStatusEntity.cs
+ rename {Toyota.Lst.Operator.Data => Toyota.Lst.Operator.Domain}/OperatorEntity.cs (92%)
+ rename {Toyota.Lst.Operator.Data => Toyota.Lst.Operator.Domain}/OperatorGroupEntity.cs (95%)
+ rename Toyota.Lst.Operator.Data/Toyota.Lst.Operator.Data.csproj => Toyota.Lst.Operator.Domain/Toyota.Lst.Operator.Domain.csproj (68%)
+ create mode 100644 Toyota.Lst.Operator.FrontService/Properties/launchSettings.json
+ create mode 100644 Toyota.Lst.Operator.FrontService/appsettings.LocalDevelopment.json
+ create mode 100644 Toyota.Lst.Operator.FrontService/appsettings.Production.json
+ create mode 100644 Toyota.Lst.Operator.FrontService/appsettings.Test.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Deploy/New-SWRandomPassword.psm1
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Deploy/create-deploy-settings.ps1
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Deploy/generate-subscription-key.ps1
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Parameters/ls-apim-operator.dev.parameters.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Parameters/ls-apim-operator.prod.parameters.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Parameters/ls-apim-operator.test.parameters.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Specification/swagger.dev.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Specification/swagger.prod.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/Specification/swagger.test.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/build-pipeline.yml
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/APIM/ls-apim-operator.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/Deployment.targets
+ rename MongoDb-dev.json => Toyota.Lst.Operator.Infrastructure/MongoDb/MongoDb.Development.json (100%)
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/MongoDb/MongoDb.Production.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/MongoDb/MongoDb.Test.json
+ create mode 100644 Toyota.Lst.Operator.Infrastructure/Toyota.Lst.Operator.Infrastructure.deployproj
+ rename Toyota.Lst.Operator.Repository/{ => Interfaces}/IOperatorGroupRepository.cs (83%)
+ create mode 100644 Toyota.Lst.Operator.UnitTests/OperatorServiceTest.cs
+ create mode 100644 Toyota.Lst.Operator/ApplicationParameters/Azure.Development.xml
+ rename Toyota.Lst.Operator/ApplicationParameters/{Cloud.xml => Azure.Production.xml} (67%)
+ create mode 100644 Toyota.Lst.Operator/ApplicationParameters/Azure.Test.xml
+ create mode 100644 Toyota.Lst.Operator/PublishProfiles/Azure.Development.xml
+ create mode 100644 Toyota.Lst.Operator/PublishProfiles/Azure.Production.xml
+ create mode 100644 Toyota.Lst.Operator/PublishProfiles/Azure.Test.xml
+ delete mode 100644 Toyota.Lst.Operator/PublishProfiles/Cloud.xml
+ create mode 100644 Toyota.Lst.OperatorService/Properties/launchSettings.json
+ create mode 100644 Toyota.Lst.OperatorService/appsettings.Production.json
+ create mode 100644 Toyota.Lst.OperatorService/appsettings.Test.json
+ create mode 100644 build-pipeline.yml
+Current branch develop is up to date.
+
+29/10/2019 09:31:36 - Error when running Fetch
+The system cannot find the file specified29/10/2019 09:31:49 - Error when running Fetch
+The system cannot find the file specified

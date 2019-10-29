@@ -1,0 +1,163 @@
+31/07/2019 16:02:28 - Error when running Sync
+Error when running C:\users\exkrlis1\source\repos\I_Site Legacy C:\Program Files\Git\bin\git.exe pull --rebase origin
+Updating 04edd2ecc..ed96abc58
+Fast-forward
+ .../ISite.Data.Model/ISite.Data.Model.csproj       |   2 +
+ .../ISite.Data.Model/Projections/UserProjection.cs |   2 +
+ .../TranslationDto/LanguageUpdatedDto.cs           |  18 ++
+ .../TranslationDto/TranslationUpdatedDto.cs        |  15 ++
+ .../ISite.DataAccess.UnitTests/UsersTests.cs       |  44 +++-
+ Web/I_Site 3/ISite.DataAccess/Users.cs             |  33 +--
+ Web/I_Site 3/ISite.DataAccessContracts/IUsers.cs   |   2 +-
+ .../ISite.Database/Scripts/Release FY20.X/Down.sql |   3 +
+ .../ISite.Database/Scripts/Release FY20.X/Up.sql   |  28 ++-
+ .../Controllers/LanguagesControllerTests.cs        |  20 +-
+ .../Controllers/UsersControllerTests.cs            |   4 +-
+ .../Facades/Impl/GetUsersFacadeTests.cs            |   4 +-
+ .../ISite.RestServices.DbApi.UnitTests.csproj      |   2 +-
+ .../ISite.RestServices.DbApi/AppSettings.config    |   3 +
+ .../App_Start/UnityConfig.cs                       |   1 +
+ .../Controllers/LanguagesController.cs             |  24 +-
+ .../Controllers/SitesController.cs                 | 275 +++++++++++----------
+ .../Controllers/UsersController.cs                 |   5 +-
+ .../Facades/IGetLanguageFacade.cs                  |  13 +
+ .../Facades/IGetUsersFacade.cs                     |   2 +-
+ .../Facades/Impl/GetLanguageFacade.cs              |  41 +++
+ .../Facades/Impl/GetUsersFacade.cs                 |   4 +-
+ .../ISite.RestServices.DbApi.csproj                |   4 +-
+ 23 files changed, 378 insertions(+), 171 deletions(-)
+ create mode 100644 Web/I_Site 3/ISite.Data.Model/TranslationDto/LanguageUpdatedDto.cs
+ create mode 100644 Web/I_Site 3/ISite.Data.Model/TranslationDto/TranslationUpdatedDto.cs
+ create mode 100644 Web/I_Site 3/ISite.RestServices.DbApi/Facades/IGetLanguageFacade.cs
+ create mode 100644 Web/I_Site 3/ISite.RestServices.DbApi/Facades/Impl/GetLanguageFacade.cs
+Current branch develop is up to date.
+
+Updating 04edd2ecc..ed96abc58
+Fast-forward
+ .../ISite.Data.Model/ISite.Data.Model.csproj       |   2 +
+ .../ISite.Data.Model/Projections/UserProjection.cs |   2 +
+ .../TranslationDto/LanguageUpdatedDto.cs           |  18 ++
+ .../TranslationDto/TranslationUpdatedDto.cs        |  15 ++
+ .../ISite.DataAccess.UnitTests/UsersTests.cs       |  44 +++-
+ Web/I_Site 3/ISite.DataAccess/Users.cs             |  33 +--
+ Web/I_Site 3/ISite.DataAccessContracts/IUsers.cs   |   2 +-
+ .../ISite.Database/Scripts/Release FY20.X/Down.sql |   3 +
+ .../ISite.Database/Scripts/Release FY20.X/Up.sql   |  28 ++-
+ .../Controllers/LanguagesControllerTests.cs        |  20 +-
+ .../Controllers/UsersControllerTests.cs            |   4 +-
+ .../Facades/Impl/GetUsersFacadeTests.cs            |   4 +-
+ .../ISite.RestServices.DbApi.UnitTests.csproj      |   2 +-
+ .../ISite.RestServices.DbApi/AppSettings.config    |   3 +
+ .../App_Start/UnityConfig.cs                       |   1 +
+ .../Controllers/LanguagesController.cs             |  24 +-
+ .../Controllers/SitesController.cs                 | 275 +++++++++++----------
+ .../Controllers/UsersController.cs                 |   5 +-
+ .../Facades/IGetLanguageFacade.cs                  |  13 +
+ .../Facades/IGetUsersFacade.cs                     |   2 +-
+ .../Facades/Impl/GetLanguageFacade.cs              |  41 +++
+ .../Facades/Impl/GetUsersFacade.cs                 |   4 +-
+ .../ISite.RestServices.DbApi.csproj                |   4 +-
+ 23 files changed, 378 insertions(+), 171 deletions(-)
+ create mode 100644 Web/I_Site 3/ISite.Data.Model/TranslationDto/LanguageUpdatedDto.cs
+ create mode 100644 Web/I_Site 3/ISite.Data.Model/TranslationDto/TranslationUpdatedDto.cs
+ create mode 100644 Web/I_Site 3/ISite.RestServices.DbApi/Facades/IGetLanguageFacade.cs
+ create mode 100644 Web/I_Site 3/ISite.RestServices.DbApi/Facades/Impl/GetLanguageFacade.cs
+Current branch develop is up to date.
+
+25/09/2019 08:43:31 - Error when running Sync
+Error when running C:\users\exkrlis1\source\repos\I_Site Legacy C:\Program Files\Git\bin\git.exe pull --rebase origin
+Updating af7674dac..585e41869
+Fast-forward
+ .../JWTHelper.cs                                   |  11 +-
+ .../ISite.ApplicationHelpers.csproj                |   1 +
+ .../ISite.ApplicationHelpers/TaskHelper.cs         |  18 +++
+ Web/I_Site 3/ISite.ApplicationHelpers/UserInfo.cs  |   6 +-
+ .../ISite.Core/Reporting/ChecklistResultReport.cs  |   7 +-
+ .../Reporting/ChecklistResultWithStateReport.cs    |   3 +-
+ .../ISite.Core/Reporting/IReportCreator.cs         |   7 +-
+ .../ISite.Core/Reporting/PreOpDriverReport.cs      |   3 +-
+ .../ISite.Core/Reporting/PreOpMachineReport.cs     |   3 +-
+ .../ISite.Data.Model/DriversActivityGraph.cs       |   8 +
+ .../MachinesActivityGraphResult.cs                 |  20 ++-
+ .../Activity/ActivityConverter.cs                  |  61 +++++--
+ .../Activity/AzureMachineActivityDataStore.cs      |  13 +-
+ .../Activity/MachineActivityGraphResponseItem.cs   |  13 ++
+ .../Activity/OperatorActivityGraphResponseItem.cs  |  13 ++
+ .../PreOpCheck/AzurePreOpCheckDataStore.cs         |   6 +-
+ .../PreOpCheck/PreOpCheckConverter.cs              |   9 +-
+ .../Azure/AzureMachineActivityDataStoreTests.cs    |  47 +++++-
+ .../Azure/AzurePreOpCheckDataStoreTests.cs         |  11 +-
+ .../Dapper/MachineActivityDapper.cs                |   2 +-
+ Web/I_Site 3/ISite.DataAccess/MachineActivity.cs   |   4 +-
+ .../ISite.DataAccess/PreOpChecklistResults.cs      |   9 +-
+ .../Controllers/MachineControllerTests.cs          | 140 +++++++++-------
+ .../Controllers/SitesControllerTests.cs            |   5 +-
+ .../App_Start/WebApiConfig.cs                      |   2 +
+ .../Controllers/MachineController.cs               | 180 ++++++++++++---------
+ .../Controllers/SitesController.cs                 |  15 +-
+ .../ISite.RestServices.DbApi.csproj                |   3 +
+ .../AppSettings.config                             |  15 ++
+ .../Controllers/PocController.cs                   |   9 +-
+ .../ScopeContainer.cs                              |   4 +-
+ .../Templates/ChecklistResultReportTemplate.xlsx   | Bin 19002 -> 19593 bytes
+ .../ISite.Web/Controllers/API/MapWSController.cs   |   9 +-
+ .../ISite.Web/Controllers/MapController.cs         |   3 +-
+ Web/I_Site 3/ISite.Web/Core/SecurityHelper.cs      |  11 ++
+ .../Extensions/SmartTiles/PreOpCheck.cshtml        |   3 +-
+ .../Extensions/SmartTiles/PreOpCheckResult.cshtml  |   2 +-
+ .../Config/ConfigHelper.cs                         |   4 +-
+ .../PocService/IPocService.cs                      |   5 +-
+ .../PocService/PocService.cs                       |   4 +-
+ 40 files changed, 484 insertions(+), 205 deletions(-)
+ create mode 100644 Web/I_Site 3/ISite.ApplicationHelpers/TaskHelper.cs
+Current branch develop is up to date.
+
+Updating af7674dac..585e41869
+Fast-forward
+ .../JWTHelper.cs                                   |  11 +-
+ .../ISite.ApplicationHelpers.csproj                |   1 +
+ .../ISite.ApplicationHelpers/TaskHelper.cs         |  18 +++
+ Web/I_Site 3/ISite.ApplicationHelpers/UserInfo.cs  |   6 +-
+ .../ISite.Core/Reporting/ChecklistResultReport.cs  |   7 +-
+ .../Reporting/ChecklistResultWithStateReport.cs    |   3 +-
+ .../ISite.Core/Reporting/IReportCreator.cs         |   7 +-
+ .../ISite.Core/Reporting/PreOpDriverReport.cs      |   3 +-
+ .../ISite.Core/Reporting/PreOpMachineReport.cs     |   3 +-
+ .../ISite.Data.Model/DriversActivityGraph.cs       |   8 +
+ .../MachinesActivityGraphResult.cs                 |  20 ++-
+ .../Activity/ActivityConverter.cs                  |  61 +++++--
+ .../Activity/AzureMachineActivityDataStore.cs      |  13 +-
+ .../Activity/MachineActivityGraphResponseItem.cs   |  13 ++
+ .../Activity/OperatorActivityGraphResponseItem.cs  |  13 ++
+ .../PreOpCheck/AzurePreOpCheckDataStore.cs         |   6 +-
+ .../PreOpCheck/PreOpCheckConverter.cs              |   9 +-
+ .../Azure/AzureMachineActivityDataStoreTests.cs    |  47 +++++-
+ .../Azure/AzurePreOpCheckDataStoreTests.cs         |  11 +-
+ .../Dapper/MachineActivityDapper.cs                |   2 +-
+ Web/I_Site 3/ISite.DataAccess/MachineActivity.cs   |   4 +-
+ .../ISite.DataAccess/PreOpChecklistResults.cs      |   9 +-
+ .../Controllers/MachineControllerTests.cs          | 140 +++++++++-------
+ .../Controllers/SitesControllerTests.cs            |   5 +-
+ .../App_Start/WebApiConfig.cs                      |   2 +
+ .../Controllers/MachineController.cs               | 180 ++++++++++++---------
+ .../Controllers/SitesController.cs                 |  15 +-
+ .../ISite.RestServices.DbApi.csproj                |   3 +
+ .../AppSettings.config                             |  15 ++
+ .../Controllers/PocController.cs                   |   9 +-
+ .../ScopeContainer.cs                              |   4 +-
+ .../Templates/ChecklistResultReportTemplate.xlsx   | Bin 19002 -> 19593 bytes
+ .../ISite.Web/Controllers/API/MapWSController.cs   |   9 +-
+ .../ISite.Web/Controllers/MapController.cs         |   3 +-
+ Web/I_Site 3/ISite.Web/Core/SecurityHelper.cs      |  11 ++
+ .../Extensions/SmartTiles/PreOpCheck.cshtml        |   3 +-
+ .../Extensions/SmartTiles/PreOpCheckResult.cshtml  |   2 +-
+ .../Config/ConfigHelper.cs                         |   4 +-
+ .../PocService/IPocService.cs                      |   5 +-
+ .../PocService/PocService.cs                       |   4 +-
+ 40 files changed, 484 insertions(+), 205 deletions(-)
+ create mode 100644 Web/I_Site 3/ISite.ApplicationHelpers/TaskHelper.cs
+Current branch develop is up to date.
+
+29/10/2019 09:31:36 - Error when running Fetch
+The system cannot find the file specified29/10/2019 09:31:49 - Error when running Fetch
+The system cannot find the file specified

@@ -1,0 +1,78 @@
+25/09/2019 08:43:25 - Error when running Sync
+Error when running C:\users\exkrlis1\source\repos\Toyota.Lst.Contracts C:\Program Files\Git\bin\git.exe pull --rebase origin
+Updating b100400..5de89fa
+Fast-forward
+ Toyota.Lst.Contracts.DbApi.v1/MachineGroupInfo.cs  |  20 ++++
+ Toyota.Lst.Contracts.DbApi.v1/MachineImage.cs      |  24 +++++
+ Toyota.Lst.Contracts.DbApi.v1/MachineInfo.cs       |  92 +++++++++++++++++
+ Toyota.Lst.Contracts.DbApi.v1/Operator.cs          |   8 +-
+ Toyota.Lst.Contracts.DbApi.v1/OperatorGroup.cs     |   2 +-
+ .../PreOpCheckImmobilizationReset.cs               |   2 +-
+ Toyota.Lst.Contracts.DbApi.v1/ResetIssuer.cs       |  19 ++++
+ .../Toyota.Lst.Contracts.DbApi.v1.csproj           |   6 +-
+ .../IPreOpMessage.cs                               |  31 ------
+ .../IPreOperationalChecklist.cs                    |  57 -----------
+ .../IPreOperationalChecklistQuestion.cs            |  11 --
+ .../IPreOperationalChecklistReport.cs              |   9 +-
+ .../IPreOperationalChecklistReportAlert.cs         |  52 ----------
+ .../IPreOperationalChecklistReportAlertQuestion.cs |   1 +
+ .../IPreOperationalMessageReport.cs                |  31 ------
+ ...onalChecklistReportQuestion.cs => IQuestion.cs} |   8 +-
+ .../IPreOpCheckOperatorAggregationQueryResponse.cs |  71 -------------
+ .../IPreOpCheckResultQueryResponse.cs              | 114 ---------------------
+ .../IPreOpCheckSummaryQueryResponse.cs             |  19 ----
+ ...Toyota.Lst.Contracts.PreOperationalCheck.csproj |   6 +-
+ 20 files changed, 178 insertions(+), 405 deletions(-)
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/MachineGroupInfo.cs
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/MachineImage.cs
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/MachineInfo.cs
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/ResetIssuer.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOpMessage.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalChecklist.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalChecklistQuestion.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalChecklistReportAlert.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalMessageReport.cs
+ rename Toyota.Lst.Contracts.PreOperationalCheck/{IPreOperationalChecklistReportQuestion.cs => IQuestion.cs} (63%)
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/QueryResponses/IPreOpCheckOperatorAggregationQueryResponse.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/QueryResponses/IPreOpCheckResultQueryResponse.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/QueryResponses/IPreOpCheckSummaryQueryResponse.cs
+Current branch master is up to date.
+
+Updating b100400..5de89fa
+Fast-forward
+ Toyota.Lst.Contracts.DbApi.v1/MachineGroupInfo.cs  |  20 ++++
+ Toyota.Lst.Contracts.DbApi.v1/MachineImage.cs      |  24 +++++
+ Toyota.Lst.Contracts.DbApi.v1/MachineInfo.cs       |  92 +++++++++++++++++
+ Toyota.Lst.Contracts.DbApi.v1/Operator.cs          |   8 +-
+ Toyota.Lst.Contracts.DbApi.v1/OperatorGroup.cs     |   2 +-
+ .../PreOpCheckImmobilizationReset.cs               |   2 +-
+ Toyota.Lst.Contracts.DbApi.v1/ResetIssuer.cs       |  19 ++++
+ .../Toyota.Lst.Contracts.DbApi.v1.csproj           |   6 +-
+ .../IPreOpMessage.cs                               |  31 ------
+ .../IPreOperationalChecklist.cs                    |  57 -----------
+ .../IPreOperationalChecklistQuestion.cs            |  11 --
+ .../IPreOperationalChecklistReport.cs              |   9 +-
+ .../IPreOperationalChecklistReportAlert.cs         |  52 ----------
+ .../IPreOperationalChecklistReportAlertQuestion.cs |   1 +
+ .../IPreOperationalMessageReport.cs                |  31 ------
+ ...onalChecklistReportQuestion.cs => IQuestion.cs} |   8 +-
+ .../IPreOpCheckOperatorAggregationQueryResponse.cs |  71 -------------
+ .../IPreOpCheckResultQueryResponse.cs              | 114 ---------------------
+ .../IPreOpCheckSummaryQueryResponse.cs             |  19 ----
+ ...Toyota.Lst.Contracts.PreOperationalCheck.csproj |   6 +-
+ 20 files changed, 178 insertions(+), 405 deletions(-)
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/MachineGroupInfo.cs
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/MachineImage.cs
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/MachineInfo.cs
+ create mode 100644 Toyota.Lst.Contracts.DbApi.v1/ResetIssuer.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOpMessage.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalChecklist.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalChecklistQuestion.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalChecklistReportAlert.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/IPreOperationalMessageReport.cs
+ rename Toyota.Lst.Contracts.PreOperationalCheck/{IPreOperationalChecklistReportQuestion.cs => IQuestion.cs} (63%)
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/QueryResponses/IPreOpCheckOperatorAggregationQueryResponse.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/QueryResponses/IPreOpCheckResultQueryResponse.cs
+ delete mode 100644 Toyota.Lst.Contracts.PreOperationalCheck/QueryResponses/IPreOpCheckSummaryQueryResponse.cs
+Current branch master is up to date.
+
